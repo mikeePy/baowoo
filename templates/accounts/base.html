@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <title></title>
+</head>
+<body>
+<!-- Navbar-->
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="{% url 'accounts:about' %}">Home</a> </li>
+            <li><a href="{% url 'accounts:request' %}">Request</a> </li>
+            {% if user.is_authenticated %}
+
+            <li><a href="{% url 'accounts:update' %}">Change Member Info</a> </li>
+
+
+
+
+            {% endif %}
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a>Welcome: {{ user.username }}</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+                {% else %}
+                <li><a class="nav navbar-right" href="{% url 'accounts:login' %}"><span class="glyphicon glyphicon-user"></span>   Login</a> </li>
+                <li><a class="nav navbar-right" href="{% url 'accounts:signup' %}">Sign Up</a> </li>
+            {% endif %}
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<div class="content">
+    {% block content %}
+
+
+
+    {% endblock %}
+
+</div>
+</body>
+</html>

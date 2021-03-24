@@ -1,0 +1,17 @@
+{% extends "accounts/base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+<div class="container">
+    <h1>Update Info</h1>
+    <p>Note: You need to type your password to submit your changes. You will also be logged out once the changes are made.</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" value="Save Changes" class="btn btn-default">
+    </form>
+
+</div>
+{% endblock %}
